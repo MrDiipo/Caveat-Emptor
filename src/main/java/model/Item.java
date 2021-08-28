@@ -8,11 +8,20 @@ public class Item {
     private Set<Bid> bid = new HashSet<Bid>();
 
 
-    public Set<Bid> getBid() {
+    public Set<Bid> getBids() {
         return bid;
     }
 
-    public void setBid(Set<Bid> bid) {
+    private void setBids(Set<Bid> bid) {
         this.bid = bid;
+    }
+
+    public void addBid(Bid bid){
+        if (bid == null) throw new NullPointerException("Can't add null bid!");
+
+        if (bid.getItem() != null) throw new IllegalStateException("Bid is already assigned to an Item.");
+
+        getBids().add(bid);
+        bid.setItem(this);
     }
 }

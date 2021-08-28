@@ -8,7 +8,7 @@ public class Bid {
         return item;
     }
 
-    public void setItem(Item item) {
+    void setItem(Item item) {
         this.item = item;
     }
 }
