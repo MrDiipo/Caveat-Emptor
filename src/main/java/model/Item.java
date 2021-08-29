@@ -1,15 +1,36 @@
 package model;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@org.hibernate.annotations.Cache(usage = org.hibernate.annotations.CacheConcurrencyStrategy.READ_WRITE)
 public class Item {
+
+    @Id
+    @Column(name = "id", nullable = false)
+    private Long id;
 
     private Set<Bid> bid = new HashSet<Bid>();
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 
     public Set<Bid> getBids() {
-        return bid;
+        return Collections.unmodifiableSet(bid);
     }
 
     private void setBids(Set<Bid> bid) {
