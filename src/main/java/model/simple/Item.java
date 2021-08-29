@@ -1,7 +1,6 @@
-package model;
+package model.simple;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
+import model.simple.Bid;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

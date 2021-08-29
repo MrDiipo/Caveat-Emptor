@@ -1,4 +1,4 @@
-package model;
+package model.simple;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

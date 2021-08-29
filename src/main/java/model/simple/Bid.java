@@ -1,4 +1,4 @@
-package model;
+package model.simple;
 
 public class Bid {
     private Item item;
