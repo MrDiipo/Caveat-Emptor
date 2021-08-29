@@ -32,6 +32,22 @@ public class Item {
 
     private Set<Bid> bid = new HashSet<Bid>();
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Date getAuctionEnd() {
+        return auctionEnd;
+    }
+
+    public void setAuctionEnd(Date auctionEnd) {
+        this.auctionEnd = auctionEnd;
+    }
+
     public Long getId() {
         return id;
     }
