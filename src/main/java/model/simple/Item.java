@@ -3,6 +3,7 @@ package model.simple;
 import model.simple.Bid;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
@@ -18,6 +19,7 @@ public class Item {
 
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(generator = "ID_GENERATOR")
     private Long id;
 
     @NotNull
