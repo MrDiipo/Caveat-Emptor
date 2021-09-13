@@ -1,8 +1,11 @@
 package model.simple;
 
+import javax.persistence.Entity;
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Entity
+@org.hibernate.annotations.Immutable
 public class Bid {
 
     private Item item;

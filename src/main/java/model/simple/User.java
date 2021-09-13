@@ -3,11 +3,13 @@ package model.simple;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.StringTokenizer;
 
 @Entity
+@Table(name = "USERS")
 public class User  implements Serializable {
     @Id
     @Column(name = "id", nullable = false)
