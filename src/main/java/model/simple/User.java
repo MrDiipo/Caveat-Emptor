@@ -15,6 +15,15 @@ public class User  implements Serializable {
 
     protected String firstName;
     protected String lastName;
+    protected Address address;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public Long getId() {
         return id;

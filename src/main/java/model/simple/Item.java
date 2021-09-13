@@ -54,11 +54,6 @@ public class Item {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-
     public Set<Bid> getBids() {
         return Collections.unmodifiableSet(bid);
     }
