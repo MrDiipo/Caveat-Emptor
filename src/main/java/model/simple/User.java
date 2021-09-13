@@ -17,14 +17,15 @@ public class User  implements Serializable {
 
     protected String firstName;
     protected String lastName;
-    protected Address address;
+    protected Address homeAddress;
 
-    public Address getAddress() {
-        return address;
+
+    public Address getHomeAddress() {
+        return homeAddress;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setHomeAddress(Address homeAddress) {
+        this.homeAddress = homeAddress;
     }
 
     public Long getId() {
