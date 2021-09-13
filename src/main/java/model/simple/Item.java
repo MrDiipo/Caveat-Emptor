@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
@@ -33,6 +34,9 @@ public class Item {
 
     @Future
     protected Date auctionEnd;
+
+    @Column(nullable = false)
+    protected BigDecimal initialPrice;
 
     private Set<Bid> bid = new HashSet<Bid>();
 
