@@ -35,7 +35,7 @@ public class Item {
     @Future
     protected Date auctionEnd;
 
-    @Column(nullable = false)
+    @Column(name = "START_PRICE",nullable = false)
     protected BigDecimal initialPrice;
 
     private Set<Bid> bid = new HashSet<Bid>();
