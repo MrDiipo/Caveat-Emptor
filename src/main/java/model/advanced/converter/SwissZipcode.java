@@ -1,4 +1,4 @@
-package model.advanced.coverter;
+package model.advanced.converter;
 
 public class SwissZipcode extends Zipcode {
     public SwissZipcode(String value) {

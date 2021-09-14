@@ -1,4 +1,4 @@
-package model.advanced.coverter;
+package model.advanced.converter;
 
 public class GermanZipCode extends Zipcode{
 

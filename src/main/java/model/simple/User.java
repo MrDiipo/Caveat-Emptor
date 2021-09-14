@@ -1,6 +1,6 @@
 package model.simple;
 
-import model.advanced.coverter.ZipcodeConverter;
+import model.advanced.converter.ZipcodeConverter;
 
 import javax.persistence.*;
 import java.io.Serializable;

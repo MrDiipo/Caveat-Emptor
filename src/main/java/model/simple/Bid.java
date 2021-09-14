@@ -3,7 +3,6 @@ package model.simple;
 import model.advanced.MonetaryAmount;
 
 import javax.persistence.Entity;
-import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -23,6 +22,6 @@ public class Bid {
         this.item = item;
     }
 
-    public void setItem(model.advanced.coverter.Item item) {
+    public void setItem(model.advanced.converter.Item item) {
     }
 }

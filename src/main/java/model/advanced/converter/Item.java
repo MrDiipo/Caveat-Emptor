@@ -1,4 +1,4 @@
-package model.advanced.coverter;
+package model.advanced.converter;
 
 import converter.MonetaryConverter;
 import model.advanced.MonetaryAmount;
@@ -60,7 +60,7 @@ public class Item {
     }
 
     @Column(name = "START_PRICE",nullable = false)
-    protected BigDecimal initialPrice;
+    protected MonetaryAmount initialPrice;
 
     private Set<Bid> bid = new HashSet<Bid>();
 

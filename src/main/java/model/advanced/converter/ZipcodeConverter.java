@@ -1,4 +1,4 @@
-package model.advanced.coverter;
+package model.advanced.converter;
 
 import javax.persistence.AttributeConverter;
 
