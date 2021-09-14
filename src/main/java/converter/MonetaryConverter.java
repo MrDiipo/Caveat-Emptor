@@ -3,7 +3,9 @@ package converter;
 import model.advanced.MonetaryAmount;
 
 import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
 
+@Converter
 public class MonetaryConverter implements AttributeConverter<MonetaryAmount, String> {
     /**
      * Converts the value stored in the entity attribute into the

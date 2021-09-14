@@ -22,4 +22,7 @@ public class Bid {
     void setItem(Item item) {
         this.item = item;
     }
+
+    public void setItem(model.advanced.coverter.Item item) {
+    }
 }
