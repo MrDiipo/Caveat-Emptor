@@ -3,6 +3,7 @@ package converter;
 import model.advanced.MonetaryAmount;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SessionImplementor;
+import org.hibernate.type.StandardBasicTypes;
 import org.hibernate.type.Type;
 import org.hibernate.usertype.CompositeUserType;
 import org.hibernate.usertype.DynamicParameterizedType;
@@ -10,6 +11,7 @@ import org.hibernate.usertype.ParameterizedType;
 
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
+import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -57,12 +59,35 @@ public class MonetaryAmountUserType implements CompositeUserType, DynamicParamet
 
     @Override
     public Object nullSafeGet(ResultSet resultSet, String[] strings, SessionImplementor sessionImplementor, Object o) throws HibernateException, SQLException {
-        return null;
+        BigDecimal amount = resultSet.getBigDecimal(strings[0]);
+        if (resultSet.wasNull()){
+            return null;
+        }
+        Currency currency = Currency.getInstance(resultSet.getString(strings[1]));
+
+        return new MonetaryAmount(amount, currency);
     }
 
     @Override
     public void nullSafeSet(PreparedStatement preparedStatement, Object o, int i, SessionImplementor sessionImplementor) throws HibernateException, SQLException {
 
+        if (o == null){
+            preparedStatement.setNull(
+                    i, StandardBasicTypes.BIG_DECIMAL.sqlType());
+            preparedStatement.setNull(i + 1, StandardBasicTypes.CURRENCY.sqlType());
+        } else {
+            MonetaryAmount amount = (MonetaryAmount) o;
+            MonetaryAmount dbAmount = convert(amount, convertTo);
+            preparedStatement.setBigDecimal(i, dbAmount.getValue());
+            preparedStatement.setString(i + 1, convertTo.getCurrencyCode());
+        }
+    }
+
+    protected MonetaryAmount convert(MonetaryAmount amount, Currency toCurrency){
+        return new MonetaryAmount(
+                amount.getValue().multiply(
+                        new BigDecimal(2))
+                , toCurrency);
     }
 
     @Override
