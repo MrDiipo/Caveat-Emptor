@@ -7,7 +7,6 @@ import org.hibernate.type.StandardBasicTypes;
 import org.hibernate.type.Type;
 import org.hibernate.usertype.CompositeUserType;
 import org.hibernate.usertype.DynamicParameterizedType;
-import org.hibernate.usertype.ParameterizedType;
 
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
@@ -24,22 +23,28 @@ public class MonetaryAmountUserType implements CompositeUserType, DynamicParamet
 
     @Override
     public String[] getPropertyNames() {
-        return new String[0];
+        return new String[]{"value", "currency"};
     }
 
     @Override
     public Type[] getPropertyTypes() {
-        return new Type[0];
+        return new Type[]{
+                StandardBasicTypes.BIG_DECIMAL,
+                StandardBasicTypes.CURRENCY
+        };
     }
 
     @Override
     public Object getPropertyValue(Object o, int i) throws HibernateException {
-        return null;
+        MonetaryAmount monetaryAmount = (MonetaryAmount) o;
+        if (i == 0){
+            return monetaryAmount.getValue();
+        } else return monetaryAmount.getCurrency();
     }
 
     @Override
     public void setPropertyValue(Object o, int i, Object o1) throws HibernateException {
-
+        throw new UnsupportedOperationException("MonetaryAmount is immutable");
     }
 
     @Override
@@ -118,13 +123,13 @@ public class MonetaryAmountUserType implements CompositeUserType, DynamicParamet
     @Override
     public void setParameterValues(Properties properties) {
 
-        ParameterType parameterType = (ParameterType) parameters.get(PARAMETER_TYPE);
+        ParameterType parameterType = (ParameterType) properties.get(PARAMETER_TYPE);
 
         String[] columns = parameterType.getColumns();
         String table = parameterType.getTable();
         Annotation[] annotations = parameterType.getAnnotationsMethod();
 
-        String convertToParameter = parameters.getProperty("convertTo");
+        String convertToParameter = properties.getProperty("convertTo");
         this.convertTo = Currency.getInstance(convertToParameter != null ? convertToParameter : "USD");
     }
 }
