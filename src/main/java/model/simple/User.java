@@ -1,5 +1,7 @@
 package model.simple;
 
+import model.advanced.coverter.ZipcodeConverter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -14,6 +16,9 @@ public class User  implements Serializable {
 
     protected String firstName;
     protected String lastName;
+
+    @Convert(converter = ZipcodeConverter.class,
+    attributeName = "zipcode")
     protected Address homeAddress;
 
     @Embedded
