@@ -1,9 +1,6 @@
 package model.simple;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.StringTokenizer;
@@ -19,6 +16,24 @@ public class User  implements Serializable {
     protected String lastName;
     protected Address homeAddress;
 
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "street",
+                    column = @Column(name = "BILLING_STREET")),
+            @AttributeOverride(name = "zipcode",
+                    column = @Column(name = "BILLING_ZIPCODE", length = 5)),
+            @AttributeOverride(name = "city",
+                    column = @Column(name = "BILLING_CITY"))
+    })
+    protected Address billingAddress;
+
+    public Address getBillingAddress() {
+        return billingAddress;
+    }
+
+    public void setBillingAddress(Address billingAddress) {
+        this.billingAddress = billingAddress;
+    }
 
     public Address getHomeAddress() {
         return homeAddress;
