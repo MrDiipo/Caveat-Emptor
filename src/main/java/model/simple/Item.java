@@ -1,10 +1,8 @@
 package model.simple;
 
 import model.simple.Bid;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -31,6 +29,15 @@ public class Item {
     message = "Name is required, maximum 255 characters."
     )
     protected String name;
+
+    @org.hibernate.annotations.Type(type = "yes_no")
+    protected boolean verified = false;
+
+    @Lob
+    protected java.sql.Blob imageBlob;
+
+    @Lob
+    protected java.sql.Clob description;
 
     @Future
     protected Date auctionEnd;
