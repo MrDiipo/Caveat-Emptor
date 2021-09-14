@@ -1,5 +1,7 @@
 package model.simple;
 
+import model.advanced.MonetaryAmount;
+
 import javax.persistence.Entity;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -10,7 +12,7 @@ public class Bid {
 
     private Item item;
 
-    private BigDecimal amount;
+    private MonetaryAmount amount;
     private Date createdOn;
 
     public Item getItem() {

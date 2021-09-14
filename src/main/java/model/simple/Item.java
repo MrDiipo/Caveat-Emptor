@@ -1,5 +1,6 @@
 package model.simple;
 
+import model.advanced.MonetaryAmount;
 import model.simple.Bid;
 
 import javax.persistence.*;
@@ -41,6 +42,16 @@ public class Item {
 
     @Future
     protected Date auctionEnd;
+
+    protected MonetaryAmount buyNowPrice;
+
+    public MonetaryAmount getBuyNowPrice() {
+        return buyNowPrice;
+    }
+
+    public void setBuyNowPrice(MonetaryAmount buyNowPrice) {
+        this.buyNowPrice = buyNowPrice;
+    }
 
     @Column(name = "START_PRICE",nullable = false)
     protected BigDecimal initialPrice;
