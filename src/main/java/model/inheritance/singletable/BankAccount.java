@@ -1,9 +1,10 @@
-package model.inheritance.tableperclass;
+package model.inheritance.singletable;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@DiscriminatorValue("BA")
 public class BankAccount extends BillingDetails {
 
     @Id
@@ -11,12 +12,12 @@ public class BankAccount extends BillingDetails {
     protected Long id;
 
     @NotNull
-    protected String cardNumber;
+    protected String account;
 
     @NotNull
-    protected String expMonth;
+    protected String bankName;
 
     @NotNull
-    protected String expYear;
+    protected String swift;
 }
 
