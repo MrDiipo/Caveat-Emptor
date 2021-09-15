@@ -1,20 +1,11 @@
 package model.inheritance.joined;
 
-import model.inheritance.mappedsuperclass.BillingDetails;
-
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@DiscriminatorValue("CC")
+@PrimaryKeyJoinColumn(name = "CREDITCARD_ID")
 public class CreditCard extends BillingDetails {
-
-    @Id
-    @GeneratedValue
-    protected Long id;
 
     @NotNull
     protected String cardNumber;
